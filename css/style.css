@@ -274,9 +274,9 @@ a {
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }
   .btn.btn-primary {
-    color: rgba(0,0,0,0); }
+    color: #fff; }
     .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
-      background: #b2c251; }
+      background: rbga(0,0,0,0); }
 
 .progress {
   overflow: visible;
