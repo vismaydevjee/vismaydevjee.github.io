@@ -110,7 +110,8 @@ a {
     -ms-transform: translateY(0%);
     transform: translateY(0%); }
     .site-navbar.scrolled.bg-light {
-      background: rgb(35, 35, 35) !important; }
+      background: rgb(35, 35, 35) !important;
+      color: #fff !important;}
     .site-navbar.scrolled .navbar-brand {
       display: inline-block;
       font-size: 18px;
