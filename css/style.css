@@ -135,7 +135,7 @@ a {
     .site-navbar.scrolled .dropdown > a:before {
       color: rgba(0, 0, 0, 0.4); }
     .site-navbar.scrolled .navbar-nav > li > a {
-      color: rgba(0, 0, 0, 0.7) ; }
+      color: #fff ; }
       .site-navbar.scrolled .navbar-nav > li > a:hover {
         color: #bac964 !important; }
       .site-navbar.scrolled .navbar-nav > li > a.active {
