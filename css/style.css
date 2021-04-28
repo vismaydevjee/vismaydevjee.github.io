@@ -98,7 +98,7 @@ a {
   .site-navbar .navbar-nav.active > a {
     color: #bac964 !important; }
   .site-navbar.scrolled {
-    background: #fff;
+    background: rgb(35, 35, 35);
     -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.09);
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.09);
     position: fixed;
@@ -110,7 +110,7 @@ a {
     -ms-transform: translateY(0%);
     transform: translateY(0%); }
     .site-navbar.scrolled.bg-light {
-      background: #fff !important; }
+      background: rgb(35, 35, 35) !important; }
     .site-navbar.scrolled .navbar-brand {
       display: inline-block;
       font-size: 18px;
@@ -124,7 +124,7 @@ a {
       -webkit-transform: translateY(0%);
       -ms-transform: translateY(0%);
       transform: translateY(0%);
-      background: #fff !important; }
+      background: rgb(35, 35, 35) !important; }
     .site-navbar.scrolled.sleep {
       -webkit-transform: translateY(-100%);
       -ms-transform: translateY(-100%);
@@ -163,7 +163,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); }
+    background: rgba(35, 35, 35, 0.5); }
   .site-hero h1 {
     font-weight: 200;
     margin-bottom: 20px;
