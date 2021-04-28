@@ -76,7 +76,7 @@ a {
     background: transparent !important; }
     @media (max-width: 991.98px) {
       .site-navbar.bg-light {
-        background: #fff !important;
+        background: rgb(35, 35, 35) !important;
         top: 0; }
         .site-navbar.bg-light .navbar-brand {
           display: inline-block;
