@@ -1,742 +1,1004 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176431958-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vismay Devjee | AI Engineer</title>
+    <!-- Importing a tech-focused font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-	  gtag('config', 'UA-176431958-1');
-	</script>
-	<title>Vismay Devjee's Portal</title>
-	
-	<link rel="icon" href="https://img.icons8.com/ios/72/v-symbol.png" type="image/x-icon">
-	
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="name" content="Vismay Devjee's Portal">
-	<meta name="robots" content="noindex, nofollow">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: rgba(20, 20, 25, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --accent-cyan: #00f3ff;
+            --accent-purple: #bd00ff;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Inter', sans-serif;
+        }
 
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/flexslider.css">
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
+        /* --- BACKGROUND ANIMATION CANVAS --- */
+        #vector-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a0a10 0%, #000000 100%);
+        }
 
+        /* --- LAYOUT & CONTAINERS --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
 
+        section {
+            padding: 5rem 0;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-family: var(--font-mono);
+            color: #fff;
+        }
+
+        .highlight {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* Terminal Typing Effect */
+        .terminal-box {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            height: 1.5em; /* fixed height to prevent jump */
+            display: flex;
+            align-items: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: var(--accent-cyan);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-cyan);
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: var(--font-mono);
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cta-outline {
+            background: transparent; 
+            border: 1px solid var(--accent-cyan); 
+            color: var(--accent-cyan);
+        }
+
+        /* --- CARDS & GLASSMORPHISM --- */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+        
+        /* Highlight States */
+        .card.dimmed {
+            opacity: 0.3;
+            filter: grayscale(100%);
+        }
+        
+        .card.active-highlight {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            opacity: 1;
+            filter: none;
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-cyan), transparent);
+            flex-grow: 1;
+            opacity: 0.5;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .company {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .role {
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+        }
+
+        .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+        }
+
+        .job-details ul {
+            list-style: none;
+        }
+
+        .job-details li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .job-details li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+        }
+
+        .log-btn {
+            background: transparent;
+            border: 1px dashed var(--text-secondary);
+            color: var(--text-secondary);
+            padding: 0.2rem 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: all 0.3s;
+        }
+
+        .log-btn:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        /* --- ARCHITECTURE DIAGRAMS (CSS ONLY) --- */
+        .architecture-flow {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .arch-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+        }
+
+        .flow-steps {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            padding: 0.4rem 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+        }
+
+        .arrow {
+            color: var(--text-secondary);
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .folder-icon {
+            color: var(--accent-cyan);
+            width: 40px;
+            height: 40px;
+        }
+
+        .project-links a {
+            color: var(--text-secondary);
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: #fff;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- SKILLS GRID --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.7rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            cursor: crosshair;
+        }
+
+        .tag:hover {
+            border-color: var(--accent-purple);
+            color: #fff;
+            background: rgba(189, 0, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* --- MODAL (SYSTEM LOG) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-window {
+            width: 90%;
+            max-width: 600px;
+            background: #0a0a10;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
+            transform: scale(0.95);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            max-height: 80vh;
+        }
+
+        .modal-overlay.active .modal-window {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: rgba(0, 243, 255, 0.1);
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .modal-title {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover { color: #fff; }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .log-entry {
+            margin-bottom: 1rem;
+            border-left: 2px solid #333;
+            padding-left: 1rem;
+        }
+
+        .log-label { color: var(--accent-purple); font-weight: bold; font-size: 0.8rem; }
+        .log-value { color: #e0e0e0; }
+
+        /* --- CONTACT --- */
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .flow-steps { flex-direction: column; align-items: flex-start; }
+            .arrow { transform: rotate(90deg); margin: 5px 0 5px 15px; }
+            .modal-window { width: 95%; }
+        }
+    </style>
 </head>
-<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
-
-
-
-	<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
-
-		<div class="container">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-
-			<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-about">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-resume">Resume</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-contact">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-
-
-
-	<section class="site-hero" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Christmas_Lights_Bokeh_Effect_%28Unsplash%29.jpg/1200px-Christmas_Lights_Bokeh_Effect_%28Unsplash%29.jpg);" id="section-home" data-stellar-background-ratio="0.5">
-		<div class="container">
-			<div class="row intro-text align-items-center justify-content-center">
-				<div class="col-md-10 text-center pt-5">
-
-					<h1 class="site-heading site-animate">Hello, I'm <strong class="d-block">Vismay Devjee</strong></h1>
-					<strong class="d-block text-white text-uppercase letter-spacing">and this is My Portal</strong>
-
-				</div>
-			</div>
-		</div>
-	</section> <!-- section -->
-
-
-
-	<section class="site-section" id="section-about">
-		<div class="container">
-			<div class="row mb-5 align-items-center">
-				<div class="col-lg-7 pr-lg-5 mb-5 mb-lg-0">
-					<img src="images\img02.png" alt="Image placeholder" class="img-fluid" width="90%">
-				</div>
-				<div class="col-lg-5 pl-lg-5">
-					<div class="section-heading">
-						<h2>About <strong>Me</strong></h2>
-					</div>
-					<p class="lead">High spirited soul with big dreams to pursue, seeking for oppurtunities to broaden my horizon.</p>
-					<p class="mb-5  ">Born and brought up in the city of dreams. Currently exploring the world of Analytics by leveraging Statistics to derive insights.</p>
-
-					<p>
-						<a href="https://www.linkedin.com/in/vismaydevjee/" class="btn btn-primary px-4 py-2 btn-sm smoothscroll">LinkedIn</a>
-						<a href="Resume.pdf" download="Vismay Devjee Résumé" class="btn btn-secondary px-4 py-2 btn-sm">Download Résumé</a>
-					</p>
-				</div>
-			</div>
-
-
-		</div>
-	</section>
-
-	<!--
-
-	<section class="site-section" id="section-portfolio">
-		<div class="container">
-			<div class="row">
-				<div class="section-heading text-center col-md-12">
-					<h2>Featured <strong>Portfolio</strong></h2>
-				</div>
-			</div>
-			<div class="filters">
-				<ul>
-					<li class="active" data-filter="*">All</li>
-					<li data-filter=".packaging">Packaging</li>
-					<li data-filter=".mockup">Mockup</li>
-					<li data-filter=".typography">Typography</li>
-					<li data-filter=".photography">Photography</li>
-				</ul>
-			</div>
-
-			<div class="filters-content">
-				<div class="row grid">
-					<div class="single-portfolio col-sm-4 all mockup">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p1.jpg" alt="">
-							</div>
-							<a href="images/p1.jpg" class="img-pop-up">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<h4>Square Box Mockup</h4>
-							<div class="cat">Mockup</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all mockup">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p2.jpg" alt="">
-							</div>
-							<a href="images/p2.jpg" class="img-pop-up">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<h4>Product Box Package Mockup</h4>
-							<div class="cat">Mockup</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all packaging">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p3.jpg" alt="">
-							</div>
-							<a href="images/p3.jpg" class="img-pop-up">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>
-
-						</div>
-						<div class="p-inner">
-							<h4>Creative Package Design</h4>
-							<div class="cat">Packaging</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all packaging">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p4.jpg" alt="">
-							</div>
-							<a href="images/p4.jpg" class="img-pop-up">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<h4>Packaging Brand</h4>
-							<div class="cat">Packaging</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all typography">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p5.jpg" alt="">
-							</div>
-							<a href="images/p5.jpg" class="img-pop-up">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<h4>Isometric 3D Extrusion</h4>
-							<div class="cat">Typography</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all photography">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p6.jpg" alt="">
-							</div>
-							<a href="images/p6.jpg" class="img-pop-up">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<h4>White Space Photography</h4>
-							<div class="cat">photography</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
- .section -->
-
-						<!--     Resume Section      -->
-
-	<section class="site-section " id="section-resume">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="section-heading text-center">
-						<h2>My <strong>Resumé</strong></h2>
-					</div>
-				</div>
-				<div class="col-md-6">
-					
-					<h3 class="mb-5">Work Experience</h3>
-					<div class="resume-item mb-4">
-						
-						<h3><a href="https://www2.deloitte.com/in/en/pages/deloitte-analytics/topics/advancing-human-ai-collaboration.html">Deloitte India</a></h3>
-						<h2><i>AI & Data Analyst</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> October 2022 - August 2023</span>
-
-						<p>
-							<li>Worked on a multi-phase project for Amazon LLP, developing an AI chat bot using Reinforcement earning from Human Feedback.</li> 
-							<li>Enhanced model performance through the application of reward modeling.</li> 
-							<br>
-							<b>Skills: AWS, AWS Lambda, Java, Python, AWS S3</b>
-						</p>
-
-						<span class="school">Mumabi, India.</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						
-						<h3><a href="https://www.stayvista.com/">Stay Vista</a></h3>
-						<h2><i>Business Analyst</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> August 2022 - October 2022</span>
-
-						<p>
-							<li>Served on a project to analyze and visualize response time queries to formulate a strategy to reduce the travel agent response time by 20%.</li> 
-							<li>Analyzed and visualized booking queries to derive insightful data from making informed decisions.</li> 
-							<br>
-							<b>Skills: Web Scrapping, Statistical Analysis, SQL, Python, Excel</b>
-						</p>
-
-						<span class="school">Mumabi, India.</span>
-					</div>
-
-
-					<h3 class="mb-5">Education</h3>
-					<div class="resume-item mb-4">
-						
-						<h3><a href="https://coe.northeastern.edu/academics-experiential-learning/academic-departments/mgen/ms-insy/">Postgraduate Degree</a></h3>
-						<h2><i>Northeastern University</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> August 2023 - May 2025</span>
-
-						<p>
-							<b>Master of Science in Information Systems</b>
-							<br>
-						    <b>Relevant Courses:</b>
-							<li>Designing Advanced Database Architecture for BI</li>
-							<li>Database Management Database Design</li>
-							<li>Java Application Development</li> 
-							<li>Data Science</li>
-						</p>
-						<span class="school">Boston, USA.</span>
-					</div>
-					
-					<div class="resume-item mb-4">
-						<h3><a href="http://www.djsce.ac.in/">Graduate Degree</a></h3>
-						<h2><i>SVKM's D.J. Sanghvi College of Engineering</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> August 2018 - July 2022</span>
-
-						<p>
-							<b>Bachelor of Engineering (B.E.) with specialization in Data Analytics.</b>
-							<br>
-						    <b>Relevant Courses:</b>
-							<li>Bio-Statistics</li>
-							<li>Python</li> 
-							<li> Data Analytics</li>
-							<li>Management Information System</li>
-						</p>
-						<span class="school">Mumbai, India.</span>
-					</div>
-					<!--
-					<div class="resume-item mb-4">
-						<h3><a href="http://aavpc.ac.in/">Junior College</a></h3>
-						<h2><i>SVKM's A.A.V. Patel Jr College</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> June 2016 - June 2018</span>
-
-						<p>Pursued Science with major's in Electronics which helped me build a strong base for my Engineering College.</p>
-						<span class="school">Mumbai, India.</span>
-					</div>
-
-					
-					<div class="resume-item mb-4">
-						<h3><a href="https://www.vissanjiacademy.com/">School</a></h3>
-						<a src="C:\Users\visma\OneDrive\Desktop\rezume\images\person_1.jpg" width ="25px" >
-						<h2><i>L.R. & S.M. Vissanji Academy</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> March 2006 - March 2016</span>
-
-						<p>Pursued Science stream and have represented my school in various sports at National level and State level competition.</p>
-						<span class="school">Mumbai, India.</span>
-					</div>
-				-->
-                </div>  
-				<div class="col-md-6">
-					<h3 class="mb-5">Project</h3>
-
-					<div class="resume-item mb-4">
-						<h3><a href="">Python Project</a></h3>
-						<h2><i>Centralized University Resource Management System with Vendor Integration</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> November 2023 - December 2023</span>
-
-						<p>
-							<li>Co-developed and integrated resource booking, vendor management, and secure transactions for a unified user experience.</li> 
-							<li>Implemented authentication, authorization, and data encryption protocols to ensure user Privacy and platform security.</li> 
-						</p>
-					</div>
-
-					<div class="resume-item mb-4">
-						<h3><a href="https://github.com/vismaydevjee/B.E.-Project-Wireless-ECG">Engineering Capstone Project</a></h3>
-						<a src="C:\Users\visma\OneDrive\Desktop\rezume\images\person_1.jpg" width ="25px" >
-						<h2><i>Wireless ECG Machine with Arrhythmia Detection using Machine Learning</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> August 2021 - July 2022</span>
-
-						<p>
-							<li>Programmed hardware to collect and transmit cardiac data wirelessly to a Cloud Database using Arduino.</li>
-							<li>Designed the machine learning model to filter out noise from the ECG signals and detect various segments of the ECG Waveform.</li>
-							<li>Developed a new algorithm for QRS wave enhancement, detection, and classification model. </li>
-					</div>
-
-					<div class="resume-item mb-4">
-						<h3><a href="https://github.com/vismaydevjee/PageRanking">Python Project</a></h3>
-						<h2><i>Webcrawler & Page Ranking</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> May 2020 - June 2020</span>
-
-						<p>
-							<li>Designing a web crawler to crawl a website and retrieve the hyperlinks.</li> 
-							<li>Each iteration of the page rank algorithm prints the average change per page of the page rank.</li> 
-						</p>
-					</div>
-
-					<!--<div class="resume-item mb-4">
-						<h3><a href="https://github.com/vismaydevjee/vismaydevjee.github.io">Web Design Project</a></h3>
-						<h2><i>Web Portfolio Designing with Google Analytics</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> June 2020 - August 2020</span>
-
-						<p>
-							<li>Programmed web portfolio to assess front-end development skills.</li> 
-							<li>Integrated it with Google Analytics to analyze demographics of the traffic.</li> 
-						</p>
-					</div>>
-				-->
-
-				<!--	
-					<div class="resume-item mb-4">
-						<h3><a href="http://www.djsce.ac.in/">Degree College</a></h3>
-						<h2><i>SVKM's D.J. Sanghvi College of Engineering</i></h2>
-						<hr>
-						<span class="date"><span class="icon-calendar"></span> August 2018 - July 2022</span>
-
-						<p>Bachelor's in Biomedical Engineering with specialization in Data Analytics.</p>
-						<span class="school">Mumbai, India.</span>
-					</div>
-				-->
-                </div> 
-				
-				<div class="col-md-6">
-
-					<!--
-
-					<h2 class="mb-5">Experience</h2>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Github</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Facebook</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Twitter</span>
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
-						<h3>Lead Product Designer</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-						<span class="school">Shopify</span>
-					</div>
-				-->
-
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-<!-- 		CLIENT Testimonial
-
-	<section class="site-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md-12">
-					<div class="section-heading text-center">
-						<h2>Client <strong>Testimonial</strong></h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Ethan McCown, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_2.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Craig Gowen, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_3.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Ethan McCown, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_4.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Craig Gowen, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</section>
-
--->
-<!--			SERVICES
-
-	<section class="site-section pb-0"  id="section-services">
-		<div class="container">
-
-			<div class="row mb-4">
-				<div class="col-md-12">
-					<div class="section-heading text-center">
-						<h2>My <strong>Services</strong></h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-
-				<div class="col-md-6 col-lg-4 text-center mb-5">
-					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
-						<span class="icon">
-							<span class="icon-browser2"></span>
-						</span>
-						<h3 class="mb-4">Web Design</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						<p><a href="#" class="site-link">Learn More <i class="icon-chevron-right"></i></a></p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 text-center mb-5">
-					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
-						<span class="icon">
-							<span class="icon-presentation"></span>
-						</span>
-						<h3 class="mb-4">Search Engine Optimization</h3>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-						<p><a href="#" class="site-link">Learn More <i class="icon-chevron-right"></i></a></p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 text-center mb-5">
-					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
-						<span class="icon">
-							<span class="icon-video2"></span>
-						</span>
-						<h3 class="mb-4">Video Editing</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-						<p><a href="#" class="site-link">Learn More <i class="icon-chevron-right"></i></a></p>
-					</div>
-				</div>
-
-
-
-			</div>
-		</div>
-	</section>
-
--->
-
-
-	<section class="site-section" id="section-blog">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="section-heading text-center">
-						<h2>Blog on <strong>Medium</strong></h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6 col-lg-4 mb-4">
-					<div class="blog-entry">
-						<a href="#"><img src="https://www.garibaldisailing.com/wp-content/uploads/2018/03/instagram-770x515.jpg" alt="Image placeholder" class="img-fluid"></a>
-						<div class="blog-entry-text">
-							<h3><a href="https://medium.com/@devjeevismay/building-instagram-web-page-from-scratch-6bd13dcfedb1">Building Instagram web page from scratch ?!</a></h3>
-							<p class="mb-4">For my final project I chose to recreate the homepage of Instagram from scratch. It took me nearly 40 hours to complete the web page. Here’s a glimpse of the final look.</p>
-
-							<div class="meta">
-								<a href="#"><span class="icon-calendar"></span> May 26, 2020</a>
-								<a href="#"><span class="icon-bubble"></span> 3 Comments</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-4 mb-4">
-					<div class="blog-entry">
-						<a href="#"><img src="images/post_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-						<div class="blog-entry-text">
-							<h3><a href="https://medium.com/@devjeevismay/twirling-pages-into-the-fictional-dimension-80d04129e675">Twirling Pages into the fictional dimension!</a></h3>
-							<p class="mb-4">One of the best fictional novel series by J.K.Rowling.As i continue my course on PIRPLE, as my first project I have to design a simple web page on my favorite book.</p>
-
-							<div class="meta">
-								<a href="#"><span class="icon-calendar"></span> May 16, 2020</a>
-								<a href="#"><span class="icon-bubble"></span> 5 Comments</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-4 mb-4">
-					<div class="blog-entry">
-						<a href="#"><img src="images/post_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-						<div class="blog-entry-text">
-							<h3><a href="https://medium.com/@devjeevismay/recipe-on-html-a82a1126c84e">My First Recipe on HTML</a></h3>
-							<p class="mb-4">So i came across this website called PRIPLE where they had various courses to learn programming languages, the one that I started with was a course on HTML and CSS. </p>
-
-							<div class="meta">
-								<a href="#"><span class="icon-calendar"></span> May 14, 2020</a>
-								<a href="#"><span class="icon-bubble"></span> 3 Comments</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
-	<section class="site-section" id="section-contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="section-heading text-center">
-						<h2>Get <strong>In Touch</strong></h2>
-					</div>
-				</div>
-<!--
-				<div class="col-md-7 mb-5 mb-md-0">
-					<form action="" class="site-form">
-						<h3 class="mb-5">Get In Touch</h3>
-						<div class="form-group">
-							<input type="text" class="form-control px-3 py-4" placeholder="Your Name">
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control px-3 py-4" placeholder="Your Email">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control px-3 py-4" placeholder="Your Phone">
-						</div>
-						<div class="form-group mb-5">
-							<textarea class="form-control px-3 py-4"cols="30" rows="10" placeholder="Write a Message"></textarea>
-						</div>
-						<div class="form-group">
-							<input type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">
-						</div>
-					</form>
-				</div>
--->
-				<div class="col-md-5 pl-md-5">
-					<h3 class="mb-5">My Contact Details</h3>
-					<ul class="site-contact-details">
-						
-						<li>
-							<span class="text-uppercase" >Email</span>
-							<a href="mailto:devjeevismay@gmail.com">devjeevismay@gmail.com</a>
-						</li>
-
-						<li>
-							<span class="text-uppercase" >Phone</span>
-							 +1 (857)230-7662
-						</li>
-
-						<li>
-							<span class="text-uppercase">Address</span>
-							Boston, USA.
-						</li>
-						
-					</ul>
-				</div>
-				<div>
-					<h4 class>LinkedIn</h4>
-					<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="vismaydevjee"><a class="LI-simple-link" href='https://in.linkedin.com/in/vismaydevjee?trk=profile-badge'>Vismay Devjee</a></div>
-						
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<footer class="site-footer">
-		<div class="container">
-	
-			<div class="row mb-5">
-				<p class="col-12 text-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved </a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
-	
-			<div class="row mb-5">
-				<div class="col-md-12 text-center">
-					<p>
-						<!--	<a href="#" class="social-item"><span class="icon-facebook2"></span></a>	-->
-						<a href="https://twitter.com/VismayDevjee" class="social-item"><span class="icon-twitter"></span></a>
-						<a href="https://www.instagram.com/vismay.devjee/?hl=en" class="social-item"><span class="icon-instagram2"></span></a>
-						<a href="https://www.linkedin.com/in/vismay-devjee-94b5b31a9/" class="social-item"><span class="icon-linkedin2"></span></a>
-					</p>
-				</div>
-			</div>
-
-		</div>
-	</footer>
-
-
-
-
-	<script src="js/vendor/jquery.min.js"></script>
-	<script src="js/vendor/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/vendor/popper.min.js"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-
-	<script src="js/vendor/jquery.easing.1.3.js"></script>
-
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
-	<!--LinkedIn Badge Script-->
-	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-	
-	<!-- Google Map -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    	<script src="js/google-map.js"></script> -->
-
-    </body>
-    </html>
+<body>
+
+    <!-- BACKGROUND CANVAS -->
+    <canvas id="vector-canvas"></canvas>
+
+    <!-- CONTENT -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="terminal-box">
+                <span id="typewriter"></span><span class="cursor">_</span>
+            </div>
+            <h1>Vismay <span class="highlight">Devjee</span></h1>
+            <p>Engineering Intelligence for Finance. Specializing in RAG workflows, LLM evaluation, and Anomaly Detection systems for high-stakes environments.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#projects" class="cta-btn">View Deployed Modules <i data-lucide="code"></i></a>
+                <a href="#experience" class="cta-btn cta-outline">Experience Logs</a>
+                <!-- DOWNLOAD BUTTON ADDED HERE -->
+                <a href="resume.pdf" download class="cta-btn cta-outline" style="border-style: dashed;">Download CV <i data-lucide="download"></i></a>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Experience Logs</h2>
+
+            <!-- Fidelity -->
+            <!-- Data-tech used for highlighting -->
+            <div class="card experience-card" data-tech="python textract statistical modeling r rag llamaindex vector database gemini claude aws s3 sox">
+                <div class="job-header">
+                    <div>
+                        <div class="company">Fidelity Investments <button class="log-btn" onclick="openModal('fidelity')">[VIEW SYSTEM LOG]</button></div>
+                        <div class="role">Risk Analyst (Jan 2025 - Present)</div>
+                    </div>
+                    <div class="date">Boston, MA</div>
+                </div>
+                <div class="job-details">
+                    <p style="margin-bottom: 1rem; color: #ccc;">Driving SOX certification controls and implementing AI-driven risk oversight.</p>
+                    
+                    <div class="architecture-flow">
+                        <div class="arch-label">System Architecture: Expense Ratio Anomaly Detection</div>
+                        <div class="flow-steps">
+                            <div class="step">Fund PDFs</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Python/Textract</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Stat Models</div>
+                            <div class="arrow">→</div>
+                            <div class="step">KRI Generation</div>
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <div class="architecture-flow">
+                        <div class="arch-label">System Architecture: Financial RAG Pipeline</div>
+                        <div class="flow-steps">
+                            <div class="step">Financial Query</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Vector DB Retrieval</div>
+                            <div class="arrow">→</div>
+                            <div class="step">LlamaIndex Eval</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Reasoning Model (Gemini/Claude)</div>
+                        </div>
+                    </div>
+                    
+                    <ul style="margin-top: 1.5rem;">
+                        <li>Manage SOX certification controls ensuring alignment with enterprise risk frameworks.</li>
+                        <li>Developed LLM RAG applications integrating fund documents into vector databases.</li>
+                        <li>Engineered custom LLM evaluation frameworks using LlamaIndex.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Deloitte -->
+            <div class="card experience-card" data-tech="python rlhf nlp statistical modeling machine learning risk advisory">
+                <div class="job-header">
+                    <div>
+                        <div class="company">Deloitte LLP <button class="log-btn" onclick="openModal('deloitte')">[VIEW SYSTEM LOG]</button></div>
+                        <div class="role">Data Engineer (Oct 2022 - Aug 2023)</div>
+                    </div>
+                    <div class="date">Mumbai, India</div>
+                </div>
+                <div class="job-details">
+                    <ul>
+                        <li>Led multi-phase AI chatbot development for Amazon using <strong>RLHF</strong> and Python.</li>
+                        <li>Implemented robust categorization systems with statistical modeling to categorize tone and context.</li>
+                        <li>Supported Enterprise Risk Management initiatives across technology infrastructure.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stay Vista -->
+            <div class="card experience-card" data-tech="data analysis statistical modeling visualization product strategy">
+                <div class="job-header">
+                    <div>
+                        <div class="company">Stay Vista</div>
+                        <div class="role">Data Analyst Intern (Feb 2022 - Oct 2022)</div>
+                    </div>
+                    <div class="date">Mumbai, India</div>
+                </div>
+                <div class="job-details">
+                    <ul>
+                        <li>Designed product to analyze response time queries, reducing agent response time by <strong>20%</strong>.</li>
+                        <li>Visualized booking queries to support informed decision-making and product strategy.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- New Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Deployed Modules</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="card project-card" data-tech="python textract statistical modeling anomaly detection aws">
+                    <div class="project-top">
+                        <i data-lucide="file-warning" class="folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i data-lucide="github"></i></a>
+                            <a href="#" target="_blank"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Expense Anomaly Detector</h3>
+                    <p class="project-desc">Automated system extracting critical fields from Fund PDFs to generate Key Risk Indicators (KRIs) for non-compliant funds.</p>
+                    <div class="tech-list">
+                        <span>Python</span>
+                        <span>AWS Textract</span>
+                        <span>Stat Modeling</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card project-card" data-tech="rag llamaindex vector database gemini claude python">
+                    <div class="project-top">
+                        <i data-lucide="network" class="folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i data-lucide="github"></i></a>
+                            <a href="#" target="_blank"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Financial RAG Pipeline</h3>
+                    <p class="project-desc">Retrieval-Augmented-Generation workflow for financial queries. Includes custom evaluation frameworks to assess reasoning models.</p>
+                    <div class="tech-list">
+                        <span>LlamaIndex</span>
+                        <span>Vector DB</span>
+                        <span>Gemini/Claude</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card project-card" data-tech="rlhf python nlp machine learning chatbot">
+                    <div class="project-top">
+                        <i data-lucide="message-square-code" class="folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i data-lucide="github"></i></a>
+                            <a href="#" target="_blank"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">RLHF Chatbot Engine</h3>
+                    <p class="project-desc">AI chatbot development emphasizing tone categorization and context awareness through Reinforcement Learning from Human Feedback.</p>
+                    <div class="tech-list">
+                        <span>Python</span>
+                        <span>RLHF</span>
+                        <span>NLP</span>
+                    </div>
+                </div>
+                
+                 <!-- Project 4 -->
+                 <div class="card project-card" data-tech="data analysis visualization python statistical modeling">
+                    <div class="project-top">
+                        <i data-lucide="bar-chart-2" class="folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i data-lucide="github"></i></a>
+                            <a href="#" target="_blank"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Response Time Analyzer</h3>
+                    <p class="project-desc">Analytical tool deployed to reduce agent response times by 20% through query visualization and pattern recognition.</p>
+                    <div class="tech-list">
+                        <span>Data Viz</span>
+                        <span>Stat Modeling</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Stack</h2>
+            <div class="skills-grid">
+                
+                <div class="card skill-category">
+                    <h3>Generative AI & ML</h3>
+                    <div class="tags">
+                        <span class="tag">LlamaIndex</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">RAG</span>
+                        <span class="tag">Vector Database</span>
+                        <span class="tag">OpenAI API</span>
+                        <span class="tag">Gemini</span>
+                        <span class="tag">Claude</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">RLHF</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                </div>
+
+                <div class="card skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">Textract</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">GitLab</span>
+                        <span class="tag">Apache Airflow</span>
+                    </div>
+                </div>
+
+                <div class="card skill-category">
+                    <h3>Data Engineering</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">SparkSQL</span>
+                        <span class="tag">Snowflake</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Statistical Modeling</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="padding-bottom: 3rem; border-top: 1px solid var(--card-border); padding-top: 2rem;">
+            <h3>Vismay Devjee</h3>
+            <p style="color: var(--text-secondary);">Master of Science, Information Systems @ Northeastern University</p>
+            <div class="contact-links">
+                <a href="mailto:devjee.v@northeastern.edu" class="contact-item"><i data-lucide="mail"></i> devjee.v@northeastern.edu</a>
+                <a href="https://www.linkedin.com/in/vismaydevjee/" class="contact-item"><i data-lucide="linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/VismayDevjee" class="contact-item"><i data-lucide="github"></i> GitHub</a>
+                <span class="contact-item"><i data-lucide="phone"></i> 857-230-7662</span>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- SYSTEM LOG MODAL -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-window">
+            <div class="modal-header">
+                <span class="modal-title">root@vismay-portfolio:~# cat system_log.txt</span>
+                <button class="modal-close" onclick="forceCloseModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-content">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // --- 1. TYPING EFFECT ---
+        const textElement = document.getElementById('typewriter');
+        const phrases = [
+            "> Initializing RAG Pipeline...",
+            "> Detecting Risk Anomalies...",
+            "> Loading Neural Vectors...",
+            "Data Scientist | Risk Analyst"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 50;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 30;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 80;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                // If it's the last phrase, stop deleting and just stay
+                if(phraseIndex === phrases.length - 1) {
+                    return; 
+                }
+                isDeleting = true;
+                typeSpeed = 1500; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex++;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Start typing
+        setTimeout(type, 1000);
+
+
+        // --- 2. ACTIVE SKILL HIGHLIGHTING ---
+        const tags = document.querySelectorAll('.tag');
+        const cards = document.querySelectorAll('.card'); // Selects both experience and project cards
+
+        tags.forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                const skill = tag.textContent.toLowerCase().trim();
+                
+                cards.forEach(card => {
+                    const techStack = card.getAttribute('data-tech');
+                    if (techStack && techStack.includes(skill)) {
+                        card.classList.add('active-highlight');
+                    } else {
+                        card.classList.add('dimmed');
+                    }
+                });
+            });
+
+            tag.addEventListener('mouseleave', () => {
+                cards.forEach(card => {
+                    card.classList.remove('active-highlight');
+                    card.classList.remove('dimmed');
+                });
+            });
+        });
+
+
+        // --- 3. SYSTEM LOG MODAL LOGIC ---
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalContent = document.getElementById('modal-content');
+
+        const logData = {
+            'fidelity': `
+                <div class="log-entry">
+                    <div class="log-label">PROCESS_ID:</div>
+                    <div class="log-value">FID-2025-RISK-OPS</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-label">STACK_TRACE:</div>
+                    <div class="log-value">
+                        - Language: Python 3.9<br>
+                        - OCR: AWS Textract<br>
+                        - Vector DB: Pinecone/Milvus<br>
+                        - LLM Framework: LlamaIndex<br>
+                        - Models: Claude 3.5 Sonnet, Gemini 1.5
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-label">EXECUTION_OUTPUT:</div>
+                    <div class="log-value">
+                        Automated extraction of 1000+ Fund PDFs.<br>
+                        Generated KRI dashboard for immediate SOX compliance review.<br>
+                        Reduced manual audit time by approx 40%.
+                    </div>
+                </div>
+            `,
+            'deloitte': `
+                <div class="log-entry">
+                    <div class="log-label">PROCESS_ID:</div>
+                    <div class="log-value">DEL-2023-AMZN-BOT</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-label">STACK_TRACE:</div>
+                    <div class="log-value">
+                        - Language: Python<br>
+                        - Methodology: RLHF (Reinforcement Learning from Human Feedback)<br>
+                        - Libraries: PyTorch, HuggingFace<br>
+                        - Infrastructure: AWS SageMaker
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-label">EXECUTION_OUTPUT:</div>
+                    <div class="log-value">
+                        Deployed tone-aware chatbot for Amazon customer support.<br>
+                        Improved context retention in multi-turn conversations.<br>
+                        Integrated with Enterprise Risk Management protocols.
+                    </div>
+                </div>
+            `
+        };
+
+        function openModal(key) {
+            modalContent.innerHTML = logData[key] || "Log data corrupted or missing.";
+            modalOverlay.classList.add('active');
+        }
+
+        function closeModal(e) {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        }
+
+        function forceCloseModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+
+        // --- 4. CANVAS BACKGROUND (Previous Logic) ---
+        const canvas = document.getElementById('vector-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const particleCount = 60;
+        const connectionDistance = 150;
+        const mouseDistance = 200;
+        
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouseDistance) {
+                    const force = (mouseDistance - distance) / mouseDistance;
+                    this.vx -= (dx / distance) * force * 0.6;
+                    this.vy -= (dy / distance) * force * 0.6;
+                }
+            }
+            draw() {
+                ctx.fillStyle = '#00f3ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        let mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        function init() {
+            resize();
+            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = 'rgba(0, 243, 255, ' + (1 - distance/connectionDistance) * 0.2 + ')'; 
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        init();
+        animate();
+
+    </script>
+</body>
+</html>
