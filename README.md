@@ -1,4 +1,4 @@
-# Vismay Devjee — AI Engineer Portfolio
+# Vismay Devjee - AI Engineer Portfolio
 
 > **Architecting Intelligence**
 > Production‑grade AI systems, evaluated, validated, and built to scale.
