@@ -59,22 +59,22 @@ export const Hero: React.FC = () => {
                View Deployed Systems
              </a>            
              <a
-              href="/Resume.pdf"
-              download="Vismay_Devjee_Resume.pdf"
-              onClick={() => {
-                if (typeof window !== "undefined" && "gtag" in window) {
-                  // @ts-ignore
-                  window.gtag("event", "resume_download", {
-                    event_category: "engagement",
-                    event_label: "Resume PDF",
-                  });
-                }
-              }}
-              className="px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 font-bold rounded-full hover:bg-cyan-950/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
-            >
-              <Download size={20} />
-              Download Resume
-            </a>
+                href="/Resume.pdf"
+                download="Vismay_Devjee_Resume.pdf"
+                onClick={() => {
+                  if (typeof window !== "undefined" && "gtag" in window) {
+                    // @ts-ignore
+                    window.gtag("event", "resume_download", {
+                      event_category: "engagement",
+                      event_label: "Resume PDF",
+                    });
+                  }
+                }}
+                className="px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 font-bold rounded-full hover:bg-cyan-950/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              >
+                <Download size={20} />
+                Download Resume
+              </a>
           </motion.div>
         </div>
 
