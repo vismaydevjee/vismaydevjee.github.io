@@ -94,7 +94,7 @@ export const Avatar: React.FC = () => {
       transition={{ duration: 0.8, type: "spring" }}
     >
       <img
-        src="public/data/face.png"
+        src="/face.png"
         alt="Vizzy avatar"
         className="absolute inset-0 w-full h-full object-contain select-none"
         draggable={false}
