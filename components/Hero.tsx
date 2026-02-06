@@ -59,7 +59,7 @@ export const Hero: React.FC = () => {
                View Deployed Systems
              </a>            
              <a 
-               href="public/Resume.pdf" 
+               href="/Resume.pdf" 
                download="Vismay_Devjee_Resume.pdf"
                className="px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 font-bold rounded-full hover:bg-cyan-950/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
              >
