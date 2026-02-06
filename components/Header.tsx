@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
           {/* Glass Shine Effect */}
           <div className={`absolute inset-0 bg-gradient-to-b ${scrolled ? 'from-white/10 via-white/5 to-transparent' : 'from-white/[0.02] to-transparent'} pointer-events-none transition-all duration-500`} />
 
-          <a href="#home" className="relative z-10 text-sm font-bold text-white tracking-widest uppercase flex items-center gap-1 shrink-0">
+          <a href="#home" className="relative z-10 text-xl font-bold text-white tracking-widest uppercase flex items-center gap-1 shrink-0">
             Vismay<span className="text-cyan-400">.</span>AI
           </a>
 
@@ -50,7 +50,7 @@ export const Header: React.FC = () => {
               <a 
                 key={link.name}
                 href={link.href}
-                className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors duration-300 px-2 py-1"
+                className="text-base font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors duration-300 px-2 py-1"
               >
                 {link.name}
               </a>
@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-4 relative z-10 shrink-0">
               <a 
                 href="#contact"
-                className="px-6 py-2.5 text-xs font-bold text-black bg-white hover:bg-cyan-50 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                className="px-6 py-2.5 text-base font-bold text-black bg-white hover:bg-cyan-50 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
               >
                 Contact Me
               </a>
