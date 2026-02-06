@@ -20,7 +20,7 @@ const projects: Project[] = [
     result: "Enabled comprehensive safety analytics and data-driven policy.",
     tech: ["Talend", "SQL Server", "Tableau", "Azure"],
     link: "#",
-    image: "data/Safety_dwh.png"
+    image: "/Safety_dwh.png"
   },
   {
     title: "VerifAI Deepfake Detection",
@@ -29,7 +29,7 @@ const projects: Project[] = [
     result: "Real-time deepfake detection integrated with infrastructure.",
     tech: ["Python", "OpenCV", "PyTorch", "React"],
     link: "https://github.com/vismaydevjee/verifai-proof-of-human",
-    image: "data/VerifAI.png"
+    image: "/VerifAI.png"
   }
 ];
 
