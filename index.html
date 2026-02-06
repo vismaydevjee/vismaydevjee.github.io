@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vismay Devjee | Architecting Intelligence</title>
+
+    <!-- Vite: if this file is in /data, it should be in /public/data for this path to work -->
+    <link rel="icon" type="image/png" href="/data/Vizzy.png" />
+
+    <!-- If you still want Tailwind via CDN, keep this (but see note below) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              cyan: { 500: '#00f0ff', 900: '#00a0aa' },
+              violet: { 500: '#bf00ff' },
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #ffffff05 1px, transparent 1px), linear-gradient(to bottom, #ffffff05 1px, transparent 1px)",
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      body { background-color:#03000a; color:#f5f5f7; overflow-x:hidden; }
+      .bg-grid {
+        background-size: 40px 40px;
+        mask-image: radial-gradient(circle at center, black, transparent 80%);
+        -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #03000a; }
+      ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- ✅ THIS is what you were missing -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
