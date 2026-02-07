@@ -34,7 +34,7 @@ const skillCategories: SkillCategory[] = [
     gridClass: "lg:col-span-3",
     skills: [
       "RAG Pipelines", "Fine-tuning (QLoRA)", "LlamaIndex", 
-      "LangChain", "Prompt Engineering", "Evaluation (Ragas)", 
+      "LangChain", "Prompt Engineering", "Evaluation (RAGs)", 
       "Vector Databases", "Context Window Opt."
     ]
   },
