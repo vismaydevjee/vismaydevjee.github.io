@@ -45,7 +45,7 @@ export const Hero: React.FC = () => {
           >
             I build the neural pathways of modern business. Specializing in 
             <span className="text-white font-medium"> RAG Systems</span>, 
-            <span className="text-white font-medium"> LLM Evaluation</span>, and 
+            <span className="text-white font-medium"> LLM Evaluation</span>, and <br />
             <span className="text-white font-medium"> High-Scale Data Pipelines</span>.
           </motion.p>
 
