@@ -77,7 +77,7 @@ export const Skills: React.FC = () => {
   return (
     <Section id="skills" className="relative">
        <div className="mb-16">
-          <h2 className="text-5xl font-display font-bold text-white mb-4">Technical Arsenal</h2>
+          <h2 className="text-5xl font-display font-bold text-white mb-4">Technical Skills</h2>
           <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full" />
        </div>
        
