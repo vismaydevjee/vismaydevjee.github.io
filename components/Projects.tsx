@@ -37,7 +37,7 @@ export const Projects: React.FC = () => {
   return (
     <Section id="projects">
       <div className="mb-16">
-        <h2 className="text-5xl font-display font-bold text-white mb-4">Selected Works</h2>
+        <h2 className="text-5xl font-display font-bold text-white mb-4">Projects</h2>
         <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full" />
       </div>
       
