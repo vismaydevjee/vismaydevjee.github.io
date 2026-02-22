@@ -42,7 +42,7 @@ export const Experience: React.FC = () => {
   return (
     <Section id="experience" className="relative">
       <div className="mb-16">
-        <h2 className="text-5xl font-display font-bold text-white mb-4">Trajectory</h2>
+        <h2 className="text-5xl font-display font-bold text-white mb-4">Work Experience</h2>
         <div className="h-1 w-20 bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full" />
       </div>
 
