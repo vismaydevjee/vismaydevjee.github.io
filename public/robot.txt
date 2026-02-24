@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vismaydevjee.github.io/sitemap.xml
